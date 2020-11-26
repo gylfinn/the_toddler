@@ -12,7 +12,7 @@ const Main = ({ navigation: { navigate } }) => (
     <TouchableHighlight style={styles.button} onPress={() => navigate('Boards')}>
       <Text style={styles.buttontext}>Board</Text>
     </TouchableHighlight>
-    <TouchableHighlight style={styles.button}>
+    <TouchableHighlight onPress={() => navigate('Lists')} style={styles.button}>
       <Text style={styles.buttontext}>Lists</Text>
     </TouchableHighlight>
     <TouchableHighlight style={styles.button}>
