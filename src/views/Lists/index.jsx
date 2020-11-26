@@ -6,13 +6,13 @@ import data from '../../resources/data.json';
 
 class Lists extends React.Component {
   render() {
-    console.log(this.props.navigation.state.params.ID)
     this.boardId = this.props.navigation.state.params.ID
+    console.log(this.props.navigation.state)
     return (
       <View style={{ flex: 1 }}>
         <Toolbar />
         <ListsList
-          navigation={this.props}
+          navigation={this.props.navigation}
           lists={data.lists.filter((item) => item.boardId === this.boardId)}
         />
       </View>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, FlatList, Text, TouchableHighlight } from 'react-native';
 import ImageThumbnail from '../ImageThumbnail';
-import styles from './styles.jsx';
+import styles from './styles';
 
 const BoardsList = ({ boards, navigation }) => (
   <View style={styles.boardlist}>
@@ -16,7 +16,7 @@ const BoardsList = ({ boards, navigation }) => (
           </View>
         </TouchableHighlight>
       )}
-      keyExtractor={(board) => board.name}
+      keyExtractor={(board) => board.id}
     />
   </View>
 );
