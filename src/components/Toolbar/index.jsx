@@ -5,10 +5,10 @@ import styles from './styles';
 const Toolbar = ({onAdd, onRemove}) => (
   <View styleName="horizontal" style={styles.toolbar}>
     <TouchableHighlight style={styles.toolbarAction} onPress={onAdd}>
-      <Text style={styles.toolbarActionText}>Add Image</Text>
+      <Text style={styles.toolbarActionText}>Create</Text>
     </TouchableHighlight>
     <TouchableHighlight style={styles.toolbarAction} onPress={onRemove}>
-      <Text style={styles.toolbarActionText}>Delete Image</Text>
+      <Text style={styles.toolbarActionText}>Delete</Text>
     </TouchableHighlight>
   </View>
 );
