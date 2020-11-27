@@ -29,6 +29,7 @@ class Boards extends React.Component {
 
   }
   render() {
+<<<<<<< HEAD
     const { selectedBoards, boards, isAddModalOpen } = this.state;
     return (
       <View style={{ flex: 1 }}>
@@ -47,6 +48,13 @@ class Boards extends React.Component {
           takePhoto={() => this.takePhoto()}
           selectFromCameraRoll={() => this.selectFromCameraRoll()}
         />
+=======
+    console.log(this.props)
+    return (
+      <View style={{ flex: 1 }}>
+        <Toolbar />
+        <BoardList navigation={this.props.navigation} boards={data.boards} />
+>>>>>>> 9131deed9aca7fb40a1f641ff6a9338c3cc32310
       </View>
     );
   }
