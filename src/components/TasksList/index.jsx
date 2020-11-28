@@ -15,18 +15,25 @@ const isDone = function (task) {
   }
 };
 
+const changeState = function (id) {
+  console.log(id);
+
+};
+
 const TasksList = ({ tasks }) => (
   <View>
     <FlatList
       numColumns={1}
       data={tasks}
       renderItem={({ item: { name, description, isFinished } }) => (
-        <View style={styles.list}>
-          <Text style={isDone(isFinished)}>
-            {name}
-            {description}
-          </Text>
-        </View>
+        <TouchableHighlight onLongPress={(id) => changeState()}>
+          <View style={styles.list}>
+            <Text style={isDone(isFinished)}>
+              {name}
+              {description}
+            </Text>
+          </View>
+        </TouchableHighlight>
       )}
       keyExtractor={(task) => task.id}
     />
