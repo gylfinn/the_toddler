@@ -12,16 +12,18 @@ class Boards extends React.Component {
     selectedBoards: [],
     isAddModalOpen: false,
   }
-  onBoardsLongPress(name){
+  onBoardsLongPress(id){
     const { selectedBoards } = this.state;
-    if (selectedBoards.indexOf(name) !== -1){
+    if (selectedBoards.indexOf(id) !== -1){
       //The board is alreadyu withiin the Lists
+
       this.setState({
-        selectedBoards: selectedBoards.filter(board => board !== name),
+        selectedBoards: selectedBoards.filter(board => board !== id),
       });
     } else {
+
       this.setState({
-        selectedBoards: [ ...selectedBoards, name ]
+        selectedBoards: [ ...selectedBoards, id ]
       });
     }
 
@@ -34,23 +36,41 @@ class Boards extends React.Component {
     });
     instance.state.isAddModalOpen = false;
   }
+
+  editBoard(instance, cboard){
+    console.log(cboard)
+    instance.setState({
+      boards: [...instance.state.boards.filter(board => board.id !== parseInt(cboard.id)),cboard]
+    });
+  }
+
+  async deleteSelectedBoards(){
+    const {selectedBoards, boards} = this.state;
+    this.setState({
+      selectedBoards: [],
+      boards: boards.filter(board => selectedBoards.indexOf(board.id) === -1)
+    });
+  }
+
+
   render() {
-    const { selectedBoards, boards, isAddModalOpen } = this.state;
+    const { selectedBoards, boards, isAddModalOpen, isEditModalOpen } = this.state;
     return (
       <View style={{ flex: 1 }}>
         <Toolbar
         onAdd={() => this.setState({ isAddModalOpen: true })}
-        onRemove={() => {}}
+        onRemove={() => {this.deleteSelectedBoards();}}
         hasSelectedBoards={selectedBoards.length>0}/>
         <BoardList
           navigation={this.props.navigation}
           onLongPress={(name) => this.onBoardsLongPress(name)}
           boards={boards}
-          selectedBoards= {selectedBoards} />
+          edit={(board) => this.editBoard(this, board)}
+          selectedBoards={selectedBoards}
+        />
         <AddModal
           isOpen={isAddModalOpen}
           closeModal={() =>  this.setState({ isAddModalOpen: false })}
-          takePhoto={() => this.takePhoto()}
           formtype={(<AddBoardForm add={(board) => this.addBoard(this, board)} />)}
           selectFromCameraRoll={() => this.selectFromCameraRoll()}
         />

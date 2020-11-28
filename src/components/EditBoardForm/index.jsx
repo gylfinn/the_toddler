@@ -1,32 +1,23 @@
 import React from 'react';
 import { View, TextInput, Button } from 'react-native';
 
-class AddListForm extends React.Component {
+class EditBoardForm extends React.Component {
   constructor(props) {
-    console.log(props.item)
     super(props)
     this.add = props.add;
-    let name = '';
-    let color = '';
-    let id = '';
-
-    if (props.item !== undefined) {
-      name = (props.item.name !== undefined) ? String(props.item.name) : '';
-      color = (props.item.color !== undefined) ? String(props.item.color) : '';
-      id = (props.item.id !== undefined) ? String(props.item.id) : '';
-    }
-
     this.state = {
-      name,
-      color,
-      id,
+      name: '',
+      thumbnailPhoto: '',
+      id: '',
     }
   }
 
   handleChange(name, value) {
+    console.log(name, value)
     this.setState({
       [name]: value,
     })
+    console.log(this.state)
   }
 
 
@@ -42,8 +33,14 @@ class AddListForm extends React.Component {
         <TextInput
           style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
           type="text"
-          value={this.state.color}
-          onChangeText={(text) => this.handleChange('color', text)}
+          value={this.state.image}
+          onChangeText={(text) => this.handleChange('thumbnailPhoto', text)}
+        />
+        <TextInput
+          style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
+          type="text"
+          value={this.state.id}
+          onChangeText={(text) => this.handleChange('id', text)}
         />
         <Button title="press me" onPress={() => this.add(this.state)}>press me</Button>
       </View>
@@ -51,4 +48,4 @@ class AddListForm extends React.Component {
   }
 }
 
-export default AddListForm;
+export default EditBoardForm;

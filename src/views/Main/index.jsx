@@ -10,13 +10,7 @@ const Main = ({ navigation: { navigate } }) => (
     <Image style={styles.image} source={logo} />
     <Text style={styles.paragraph}>The New and MUCH IMPROVED Toddler Application! Welcome!!!!</Text>
     <TouchableHighlight style={styles.button} onPress={() => navigate('Boards')}>
-      <Text style={styles.buttontext}>Board</Text>
-    </TouchableHighlight>
-    <TouchableHighlight onPress={() => navigate('Lists')} style={styles.button}>
-      <Text style={styles.buttontext}>Lists</Text>
-    </TouchableHighlight>
-    <TouchableHighlight style={styles.button}>
-      <Text style={styles.buttontext}>Tasks</Text>
+      <Text style={styles.buttontext}>Boards</Text>
     </TouchableHighlight>
   </View>
 );
