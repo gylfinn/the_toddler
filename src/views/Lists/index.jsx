@@ -36,7 +36,7 @@ class Lists extends React.Component {
     const {selectedLists, lists} = this.state;
     this.setState({
       selectedLists: [],
-      lists: lists.filter(list => selectedLists.indexOf(list.name) === -1)
+      lists: lists.filter(list => selectedLists.indexOf(list.id) === -1)
     });
   }
 
