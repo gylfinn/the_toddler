@@ -33,6 +33,7 @@ class Tasks extends React.Component {
           onRemove={() => {}}
         />
         <TasksList
+          instance={this}
           tasks={tasks.filter((item) => item.listId === this.listId)}
         />
         <AddModal
